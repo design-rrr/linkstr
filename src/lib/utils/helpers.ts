@@ -93,7 +93,7 @@ export async function isNip05Valid(nip05: string | undefined = "", npub: string 
       return false;
     }
 
-    const nip05Promise = await NDKUser.fromNip05(nip05.toLowerCase());
+    const nip05Promise = await NDKUser.fromNip05(nip05.toLowerCase(), get(ndkStore));
     const isNip05Valid = nip05Promise !== undefined;
     const Nip05address = nip05;
     const UserNpub = isNip05Valid ? nip05Promise.npub : npub;
@@ -320,16 +320,16 @@ export function setCustomStyles(cssTheme: string) {
 export async function fetchUserProfile(opts: string): Promise<NDKUserProfile | undefined> {
   try {
     if (browser && opts.trim()) {
-        const ndk = getStore(ndkStore);
-        const ndkUser = ndk.getUser({ pubkey: opts });
+      const ndk = getStore(ndkStore);
+      const ndkUser = ndk.getUser({ pubkey: opts });
 
-        await ndkUser.fetchProfile({
-          closeOnEose: true,
-          groupable: false,
-          groupableDelay: 200,
-        });
-        return ndkUser.profile as NDKUserProfile;
-      }
+      await ndkUser.fetchProfile({
+        closeOnEose: true,
+        groupable: false,
+        groupableDelay: 200,
+      });
+      return ndkUser.profile as NDKUserProfile;
+    }
   } catch (error) {
     console.error(error);
     throw error;

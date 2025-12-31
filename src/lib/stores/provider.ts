@@ -12,7 +12,8 @@ export const autoLoginStore: Writable<boolean> = localStorageStore("auto-login",
 
 export const defaulRelaysUrls: string[] = [
   "wss://purplepag.es",
-  "wss://relay.nostr.band",
+  "wss://relay.damus.io",
+  "wss://relay.nostr.net",
   "wss://nos.lol",
 ];
 
