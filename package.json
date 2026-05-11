@@ -2,7 +2,7 @@
   "name": "nostree",
   "version": "0.1.5.5",
   "private": true,
-  "homepage": "https://nostree.me",
+  "homepage": "linkstr-lake.vercel.app",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
